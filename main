@@ -1,0 +1,46 @@
+
+#include<stdio.h>
+int enByk(int[]);
+
+int main(){
+
+	int sayi[5], drm = 1;
+
+	while (drm){
+		printf("5 adet sayi giriniz:  ");
+		scanf_s("%d %d %d %d %d", sayi, &sayi[1], &sayi[2], &sayi[3], &sayi[4]);
+		for (int i = 0; i < 5; i++){
+			if (sayi[i] < 0 || sayi[i]>30){ drm = 1; break; }
+
+			else drm = 0;
+		}
+		printf("\n");
+	}
+
+	printf("%d  %d  %d  %d  %d  \n", sayi[0], sayi[1], sayi[2], sayi[3], sayi[4]);
+	printf("enbyk= %d\n", enByk(sayi));
+
+	for (int dis = enByk(sayi); dis >= 0; dis--){
+		printf("|    ");
+		for (int ic = 0; ic <5; ic++){
+			if (dis < sayi[ic])
+				printf("***      ");
+			else
+				printf("         ");
+		}
+		printf("\n");
+	}
+	printf("|-------------------------------------------------\n");
+	getchar();
+
+	return 0;
+}
+
+int enByk(int d[]){
+	int enbyk = *d;
+	for (int i = 1; i < 5; i++)
+		if (enbyk < d[i])
+			enbyk = d[i];
+	return enbyk;
+
+}
